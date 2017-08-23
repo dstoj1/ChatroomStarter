@@ -15,3 +15,9 @@ C:\Users\Ljiljana\Downloads\ChatroomStarter\ChatroomStarter\ChatroomStarter\Chat
 C:\Users\Ljiljana\Downloads\ChatroomStarter\ChatroomStarter\ChatroomStarter\ChatroomStarter\Server\bin\Debug\Server.exe
 C:\Users\Ljiljana\Downloads\ChatroomStarter\ChatroomStarter\ChatroomStarter\ChatroomStarter\Server\bin\Debug\Server.pdb
 C:\Users\Ljiljana\Downloads\ChatroomStarter\ChatroomStarter\ChatroomStarter\ChatroomStarter\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\marya_000\Documents\devCodeCamp\C# code practice\ChatroomStarter\Server\bin\Debug\Server.exe.config
+C:\Users\marya_000\Documents\devCodeCamp\C# code practice\ChatroomStarter\Server\obj\Debug\Server.exe
+C:\Users\marya_000\Documents\devCodeCamp\C# code practice\ChatroomStarter\Server\obj\Debug\Server.pdb
+C:\Users\marya_000\Documents\devCodeCamp\C# code practice\ChatroomStarter\Server\bin\Debug\Server.exe
+C:\Users\marya_000\Documents\devCodeCamp\C# code practice\ChatroomStarter\Server\bin\Debug\Server.pdb
+C:\Users\marya_000\Documents\devCodeCamp\C# code practice\ChatroomStarter\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
