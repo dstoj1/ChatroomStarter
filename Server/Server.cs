@@ -15,17 +15,12 @@ namespace Server
     {
         public static Client client;
         TcpListener server;
-<<<<<<< HEAD
         Dictionary<string, int> listOfClients = new Dictionary<string, int>();
         //listOfClients.Add(Sara, 1);
         int clientCounter = 0;
         private string username = "Bill";
-=======
         Dictionary<string, int> clientList = new Dictionary<string, int>();
-        string username = "Bill";
-        int clientCounter = 0;
-
->>>>>>> 8284ad8fcfa1774267922ae807112ca14497aeb9
+ 
         public Server()
         {
             server = new TcpListener(IPAddress.Any, 9999);
@@ -37,7 +32,7 @@ namespace Server
             client.Recieve();
            // Respond(message);
         }
-<<<<<<< HEAD
+ 
         public void broadCast()
         {
             foreach (KeyValuePair<string, int> item in listOfClients)
@@ -50,7 +45,6 @@ namespace Server
             clientCounter++;
            //Console.WriteLine("Please enter your name.");
            // username = Console.ReadLine();
-=======
 
         public void Broadcast()
         {
