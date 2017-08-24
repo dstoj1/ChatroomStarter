@@ -12,6 +12,7 @@ namespace Client
     {
         TcpClient clientSocket;
         NetworkStream stream;
+
         public Client(string IP, int port)
         {
             clientSocket = new TcpClient();
