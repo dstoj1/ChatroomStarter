@@ -14,6 +14,10 @@ namespace Server
     {
         public static Client client;
         TcpListener server;
+        Dictionary<string, int> listOfClients = new Dictionary<string, int>();
+        //listOfClients.Add(Sara, 1);
+        int clientCounter = 0;
+        private string username = "Bill";
         public Server()
         {
             server = new TcpListener(IPAddress.Any, 9999);
@@ -25,13 +29,25 @@ namespace Server
             client.Recieve();
            // Respond(message);
         }
+        public void broadCast()
+        {
+            foreach (KeyValuePair<string, int> item in listOfClients)
+            {
+
+            }
+        }
         private void AcceptClient()
         {
+            clientCounter++;
+           //Console.WriteLine("Please enter your name.");
+           // username = Console.ReadLine();
             TcpClient clientSocket = default(TcpClient);
             clientSocket = server.AcceptTcpClient();
             Console.WriteLine("Connected");
             NetworkStream stream = clientSocket.GetStream();
             client = new Client(stream, clientSocket);
+            listOfClients.Add(username, clientCounter);
+            broadCast();
         }
         private void Respond(string body)
         {
