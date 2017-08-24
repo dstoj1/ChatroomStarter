@@ -12,17 +12,22 @@ namespace Client
     {
         TcpClient clientSocket;
         NetworkStream stream;
+
         public Client(string IP, int port)
         {
             clientSocket = new TcpClient();
-            clientSocket.Connect(IPAddress.Parse(IP), port);
+            clientSocket.Connect(IPAddress.Parse("192.168.0.114"), 9999);
             stream = clientSocket.GetStream();
         }
+
         public void Send()
         {
+            while (true)
+            {
             string messageString = UI.GetInput();
             byte[] message = Encoding.ASCII.GetBytes(messageString);
             stream.Write(message, 0, message.Count());
+            }
         }
         public void Recieve()
         {
