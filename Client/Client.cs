@@ -31,9 +31,12 @@ namespace Client
         }
         public void Recieve()
         {
+            while (true)
+            {
             byte[] recievedMessage = new byte[256];
             stream.Read(recievedMessage, 0, recievedMessage.Length);
             UI.DisplayMessage(Encoding.ASCII.GetString(recievedMessage));
+            }
         }
     }
 }
