@@ -15,9 +15,8 @@ namespace Server
     {
         public static Client client;
         TcpListener server;
-        Dictionary<string, int> clientList = new Dictionary<string, int>();
-        string username = "Bill";
-        int clientCounter = 0;
+        Dictionary<string, TcpClient> usersDictionary = new Dictionary<string, TcpClient>();
+        public string username = "Bill";
 
         public Server()
         {
@@ -33,7 +32,7 @@ namespace Server
 
         public void Broadcast()
         {
-            foreach (KeyValuePair<string, int> item in clientList)
+            foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
             {
                 Console.WriteLine();
             }
@@ -41,14 +40,15 @@ namespace Server
 
         private void AcceptClient()
         {
-            clientCounter++;
-            TcpClient clientSocket = default(TcpClient);
-            clientSocket = server.AcceptTcpClient();
-            Console.WriteLine("Connected");
-            NetworkStream stream = clientSocket.GetStream();
-            client = new Client(stream, clientSocket);
-            clientList.Add(username, clientCounter);
-            Broadcast();
+            while (true)
+            {
+                TcpClient clientSocket = default(TcpClient);
+                clientSocket = server.AcceptTcpClient();
+                Console.WriteLine("Connected");
+                NetworkStream stream = clientSocket.GetStream();
+                client = new Client(stream, clientSocket);
+                usersDictionary.Add(username, clientSocket);
+            }
         }
         private void Respond(string body)
         {
