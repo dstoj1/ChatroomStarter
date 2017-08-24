@@ -27,7 +27,7 @@ namespace Server
         {
             AcceptClient();
             client.Recieve();
-           // Respond(message);
+            // Respond(message);
         }
 
         public void Broadcast()
@@ -52,7 +52,7 @@ namespace Server
         }
         private void Respond(string body)
         {
-                client.Send(body);
+            client.Send(body);
         }
 
     }
