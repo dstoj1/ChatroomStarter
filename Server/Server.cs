@@ -22,8 +22,8 @@ namespace Server
         public void Run()
         {
             AcceptClient();
-            string message = client.Recieve();
-            Respond(message);
+            client.Recieve();
+           // Respond(message);
         }
         private void AcceptClient()
         {
@@ -35,7 +35,7 @@ namespace Server
         }
         private void Respond(string body)
         {
-             client.Send(body);
+                client.Send(body);
         }
     }
 }
