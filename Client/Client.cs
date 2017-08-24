@@ -21,12 +21,12 @@ namespace Client
 
         public void Send()
         {
-            //while (true)
-            //{
+            while (true)
+            {
             string messageString = UI.GetInput();
             byte[] message = Encoding.ASCII.GetBytes(messageString);
             stream.Write(message, 0, message.Count());
-            //}
+            }
         }
         public void Recieve()
         {

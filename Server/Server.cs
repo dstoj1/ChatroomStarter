@@ -1,4 +1,5 @@
 ﻿using System;
+//using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,11 @@ namespace Server
     {
         public static Client client;
         TcpListener server;
-        
+        //public static Hashtable clientsList = new Hashtable();
+
         public Server()
         {
-            server = new TcpListener(IPAddress.Parse("127.0.0.1"), 9999);
+            server = new TcpListener(IPAddress.Any, 9999);
             server.Start();
         }
         public void Run()
@@ -33,6 +35,7 @@ namespace Server
             Console.WriteLine("Connected");
             NetworkStream stream = clientSocket.GetStream();
             client = new Client(stream, clientSocket);
+            //clientsList.Add(client);
         }
         private void Respond(string body)
         {
