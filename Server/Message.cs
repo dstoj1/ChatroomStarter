@@ -18,8 +18,7 @@ namespace Server
             UserId = sender?.UserId;
         }
             //if (UserId == userId)
-            //{
-            //    skip over message display
+            //{ //skip over message display
             //}
     }
 }
