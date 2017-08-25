@@ -29,7 +29,7 @@ namespace Client
         }
         public void Notify (ISubscriber chatter)
         {
-            Console.WriteLine("Chatter {0} ");
+            Console.WriteLine("Chatter {0} has logged on.");
         }
     }
 }
