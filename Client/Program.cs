@@ -8,7 +8,7 @@ namespace Client
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
             Client client = new Client("192.168.0.114", 9999);
 

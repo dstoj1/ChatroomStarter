@@ -17,7 +17,6 @@ namespace Server
         TcpListener server;
         Dictionary<string, TcpClient> usersDictionary = new Dictionary<string, TcpClient>();
         public string username = "Bill";
-
         public Server()
         {
             server = new TcpListener(IPAddress.Any, 9999);
@@ -61,7 +60,6 @@ namespace Server
                 client = new Client(stream, clientSocket);
                 usersDictionary.Add(username, clientSocket);
             }
-
             //clientSocket.Close();
             //serverSocket.Stop();
             //Console.Writeline(" >> " + "exit");
