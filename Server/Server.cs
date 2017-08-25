@@ -26,6 +26,7 @@ namespace Server
         public void Run()
         {
             AcceptClient();
+            //string message =
             client.Recieve();
             //Respond(message);
         }
@@ -34,9 +35,9 @@ namespace Server
         //{
         //    while (true)
         //    {
-                //BinaryReader reader = new BinaryReader(clientSocket.GetStream());
-                //string message = read.ReadString();
-                //foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
+        //BinaryReader reader = new BinaryReader(clientSocket.GetStream());
+        //string message = read.ReadString();
+        //foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
         //        {
         //            Console.WriteLine(message);
         //        }

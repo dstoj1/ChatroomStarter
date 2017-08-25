@@ -11,9 +11,20 @@ namespace Client
         static void Main(string[] args)
         {
             Client client = new Client("192.168.0.114", 9999);
-            client.Send();
-            client.Recieve();
-            Console.ReadLine();
+
+            Chatroom chatroom = new Chatroom();
+
+            ISubscriber Mike = new User("Mike");
+            ISubscriber Adam = new User("Adam");
+
+            chatroom.JoinChatroom(Mike);
+            chatroom.JoinChatroom(Adam);
+
+            chatroom.EnterChatroom();
+
+            //client.Send();
+            //client.Recieve();
+            //Console.ReadLine();
         }
     }
 }
