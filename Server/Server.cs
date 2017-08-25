@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
+using System.IO;
 
 namespace Server
 {
@@ -17,6 +17,10 @@ namespace Server
         TcpListener server;
         Dictionary<string, TcpClient> usersDictionary = new Dictionary<string, TcpClient>();
         public string username = "Bill";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2a803c7b0fe7aebf0ccafb929c775d49e0b69286
         public Server()
         {
             server = new TcpListener(IPAddress.Any, 9999);
@@ -26,8 +30,9 @@ namespace Server
         {
             AcceptClient();
             client.Recieve();
-           // Respond(message);
+            //Respond(message);
         }
+<<<<<<< HEAD
         public void Broadcast()
         {
             foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
@@ -35,6 +40,22 @@ namespace Server
                 Console.WriteLine();
             }
         }
+=======
+
+        //public void Broadcast()
+        //{
+        //    while (true)
+        //    {
+                //BinaryReader reader = new BinaryReader(clientSocket.GetStream());
+                //string message = read.ReadString();
+                //foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
+        //        {
+        //            Console.WriteLine(message);
+        //        }
+        //    }
+
+        //}
+>>>>>>> 2a803c7b0fe7aebf0ccafb929c775d49e0b69286
 
         private void AcceptClient()
         {
@@ -47,10 +68,18 @@ namespace Server
                 client = new Client(stream, clientSocket);
                 usersDictionary.Add(username, clientSocket);
             }
+<<<<<<< HEAD
+=======
+            //clientSocket.Close();
+            //serverSocket.Stop();
+            //Console.Writeline(" >> " + "exit");
+            //Console.ReadLine();
+>>>>>>> 2a803c7b0fe7aebf0ccafb929c775d49e0b69286
         }
+
         private void Respond(string body)
         {
-                client.Send(body);
+            client.Send(body);
         }
 
     }
