@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
+using System.IO;
 
 namespace Server
 {
@@ -27,16 +27,22 @@ namespace Server
         {
             AcceptClient();
             client.Recieve();
-            // Respond(message);
+            //Respond(message);
         }
 
-        public void Broadcast()
-        {
-            foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
-            {
-                Console.WriteLine();
-            }
-        }
+        //public void Broadcast()
+        //{
+        //    while (true)
+        //    {
+                //BinaryReader reader = new BinaryReader(clientSocket.GetStream());
+                //string message = read.ReadString();
+                //foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
+        //        {
+        //            Console.WriteLine(message);
+        //        }
+        //    }
+
+        //}
 
         private void AcceptClient()
         {
@@ -49,7 +55,12 @@ namespace Server
                 client = new Client(stream, clientSocket);
                 usersDictionary.Add(username, clientSocket);
             }
+            //clientSocket.Close();
+            //serverSocket.Stop();
+            //Console.Writeline(" >> " + "exit");
+            //Console.ReadLine();
         }
+
         private void Respond(string body)
         {
             client.Send(body);

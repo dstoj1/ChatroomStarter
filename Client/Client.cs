@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Client
@@ -37,6 +38,13 @@ namespace Client
             stream.Read(recievedMessage, 0, recievedMessage.Length);
             UI.DisplayMessage(Encoding.ASCII.GetString(recievedMessage));
             }
+        }
+        public void CreateThreads()
+        {
+            Thread ctThread = new Thread(Send);
+            Thread ctThreadTwo = new Thread(Recieve);
+            ctThreadTwo.Start();
+            ctThread.Start();
         }
     }
 }
