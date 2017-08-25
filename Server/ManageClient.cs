@@ -11,7 +11,6 @@ namespace Server
     public class ManageClient
     {
         TcpClient clientSocket;
-        private int counter = 0;
 
         //public void startClient(TcpClient inClientSocket)
         //{

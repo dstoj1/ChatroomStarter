@@ -13,25 +13,13 @@ namespace Client
         public void JoinChatroom (ISubscriber chatter)
         {
             chatters.Add(chatter);
-            Console.WriteLine("{0} joined the chatroom", chatter.UserId);
-        }
+            Console.WriteLine("{0} has joined the chatroom", chatter.UserId);
 
-        public void LeaveChatroom (ISubscriber chatter)
-        {
-            chatters.Remove(chatter);
-            Console.WriteLine("{0} left the chatroom", chatter.UserId);
         }
-
-        public void EnterChatroom()
-        {
-            NotifyChatters();
-        }
-        public void NotifyChatters()
-        {
-            foreach (ISubscriber chatter in chatters)
-            {
-                chatter.Notify(chatter);
-            }
-        }
+        //public void LeaveChatroom (ISubscriber chatter)
+        //{
+        //    chatters.Remove(chatter);
+        //    Console.WriteLine("{0} left the chatroom", chatter.UserId);
+        //}
     }
 }

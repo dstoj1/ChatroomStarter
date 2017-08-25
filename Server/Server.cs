@@ -25,6 +25,7 @@ namespace Server
         public void Run()
         {
             AcceptClient();
+            //accept client thread-- server always open. sender and broadcaster.
             //string message =
             client.Recieve();
             //Respond(message);

@@ -39,12 +39,5 @@ namespace Client
             UI.DisplayMessage(Encoding.ASCII.GetString(recievedMessage));
             }
         }
-        public void CreateThreads()
-        {
-            Thread ctThread = new Thread(Send);
-            Thread ctThreadTwo = new Thread(Recieve);
-            ctThreadTwo.Start();
-            ctThread.Start();
-        }
     }
 }

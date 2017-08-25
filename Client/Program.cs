@@ -11,20 +11,15 @@ namespace Client
         static void Main(string[] args) 
         {
             Client client = new Client("192.168.0.114", 9999);
+            Parallel.Invoke(client.Send, client.Recieve);
 
-            Chatroom chatroom = new Chatroom();
+            //Chatroom chatroom = new Chatroom();
 
-            ISubscriber Mike = new User("Mike");
-            ISubscriber Adam = new User("Adam");
+            //ISubscriber Mike = new User("Mike");
+            //ISubscriber Adam = new User("Adam");
 
-            chatroom.JoinChatroom(Mike);
-            chatroom.JoinChatroom(Adam);
-
-            chatroom.EnterChatroom();
-
-            //client.Send();
-            //client.Recieve();
-            //Console.ReadLine();
+            //chatroom.JoinChatroom(Mike);
+            //chatroom.JoinChatroom(Adam);
         }
     }
 }
