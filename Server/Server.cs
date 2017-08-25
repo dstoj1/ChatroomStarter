@@ -17,7 +17,10 @@ namespace Server
         TcpListener server;
         Dictionary<string, TcpClient> usersDictionary = new Dictionary<string, TcpClient>();
         public string username = "Bill";
+<<<<<<< HEAD
+=======
 
+>>>>>>> 2a803c7b0fe7aebf0ccafb929c775d49e0b69286
         public Server()
         {
             server = new TcpListener(IPAddress.Any, 9999);
@@ -30,6 +33,15 @@ namespace Server
             client.Recieve();
             //Respond(message);
         }
+<<<<<<< HEAD
+        public void Broadcast()
+        {
+            foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
+            {
+                Console.WriteLine();
+            }
+        }
+=======
 
         //public void Broadcast()
         //{
@@ -44,6 +56,7 @@ namespace Server
         //    }
 
         //}
+>>>>>>> 2a803c7b0fe7aebf0ccafb929c775d49e0b69286
 
         private void AcceptClient()
         {
@@ -56,10 +69,13 @@ namespace Server
                 client = new Client(stream, clientSocket);
                 usersDictionary.Add(username, clientSocket);
             }
+<<<<<<< HEAD
+=======
             //clientSocket.Close();
             //serverSocket.Stop();
             //Console.Writeline(" >> " + "exit");
             //Console.ReadLine();
+>>>>>>> 2a803c7b0fe7aebf0ccafb929c775d49e0b69286
         }
 
         private void Respond(string body)
