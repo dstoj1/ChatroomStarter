@@ -10,7 +10,7 @@ namespace Client
     {
         static void Main(string[] args) 
         {
-            Client client = new Client("192.168.0.114", 9999);
+            Client client = new Client("127.0.0.1", 9999);
             Parallel.Invoke(client.Send, client.Recieve);
 
             //Chatroom chatroom = new Chatroom();

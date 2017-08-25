@@ -29,15 +29,18 @@ namespace Server
         }
         public void Recieve()
         {
-            Queue<string> messagesQueue = new Queue<string>();
+            while (true)
+            {
             byte[] recievedMessage = new byte[256];
             stream.Read(recievedMessage, 0, recievedMessage.Length);
             string recievedMessageString = Encoding.ASCII.GetString(recievedMessage);
-            messagesQueue.Enqueue(recievedMessageString);
+            Console.WriteLine(recievedMessageString);
 
-            foreach (string value in messagesQueue)
-            {
-                Console.WriteLine(value);
+                //foreach (string value in messagesQueue)
+                //{
+                //    Console.WriteLine(value);
+                //}
+
             }
         }
     }

@@ -13,43 +13,39 @@ namespace Server
 {
     class Server
     {
+        Queue<string> messagesQueue;
         public static Client client;
         TcpListener server;
         Dictionary<string, TcpClient> usersDictionary = new Dictionary<string, TcpClient>();
         public string username = "Bill";
         public Server()
         {
-            server = new TcpListener(IPAddress.Any, 9999);
+            messagesQueue = new Queue<string>();
+            server = new TcpListener(IPAddress.Parse("127.0.0.1"), 9999);
             server.Start();
         }
         public void Run()
         {
-            AcceptClient();
+            Thread acceptor = new Thread(new ThreadStart(AcceptClient));
+            acceptor.Start();
             //accept client thread-- server always open. sender and broadcaster.
             //string message =
-            client.Recieve();
             //Respond(message);
         }
         public void Broadcast()
         {
-            foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
+            while (true)
             {
-                Console.WriteLine();
+                //if queue has something in it, deque that something.
+                //string message = de
+                //BinaryReader reader = new BinaryReader(clientSocket.GetStream());
+                //string message = read.ReadString();
+                    foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
+                    {
+                        //send to each client in dictionary;
+                    }
             }
         }
-        //public void Broadcast()
-        //{
-        //    while (true)
-        //    {
-        //BinaryReader reader = new BinaryReader(clientSocket.GetStream());
-        //string message = read.ReadString();
-        //foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
-        //        {
-        //            Console.WriteLine(message);
-        //        }
-        //    }
-
-        //}
         private void AcceptClient()
         {
             while (true)
@@ -60,6 +56,8 @@ namespace Server
                 NetworkStream stream = clientSocket.GetStream();
                 client = new Client(stream, clientSocket);
                 usersDictionary.Add(username, clientSocket);
+                Thread reciever = new Thread(new ThreadStart(client.Recieve));
+                reciever.Start();
             }
             //clientSocket.Close();
             //serverSocket.Stop();
