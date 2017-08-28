@@ -16,10 +16,5 @@ namespace Client
             Console.WriteLine("{0} has joined the chatroom", chatter.UserId);
 
         }
-        //public void LeaveChatroom (ISubscriber chatter)
-        //{
-        //    chatters.Remove(chatter);
-        //    Console.WriteLine("{0} left the chatroom", chatter.UserId);
-        //}
     }
 }

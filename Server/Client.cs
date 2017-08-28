@@ -11,24 +11,19 @@ namespace Server
     {
         NetworkStream stream;
         TcpClient client;
-        //Queue<string> messagesQueue;
         public string UserId;
         public string recievedMessageString;
 
         public Client(NetworkStream Stream, TcpClient Client)
         {
-            //messagesQueue = new Queue<string>();
             stream = Stream;
             client = Client;
             UserId = "495933b6-1762-47a1-b655-483510072e73";
         }
         public void Send(string Message)
         {
-            while (true)
-            {
                 byte[] message = Encoding.ASCII.GetBytes(Message);
                 stream.Write(message, 0, message.Count());
-            }
         }
         public void Recieve()
         {
@@ -38,12 +33,6 @@ namespace Server
                 stream.Read(recievedMessage, 0, recievedMessage.Length);
                 recievedMessageString = Encoding.ASCII.GetString(recievedMessage);
                 Console.WriteLine(recievedMessageString);
-                //messagesQueue.Enqueue(recievedMessageString);
-
-                //foreach (string value in messagesQueue)
-                //{
-                //    Console.WriteLine(value);
-                //}
             }
         }
     }

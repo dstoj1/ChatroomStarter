@@ -11,6 +11,7 @@ namespace Client
 {
     public class Client
     {
+        Thread reciever;
         TcpClient clientSocket;
         NetworkStream stream;
         public string username;
@@ -19,8 +20,10 @@ namespace Client
             //Console.WriteLine("Please enter your username.");
             //username = Console.ReadLine();
             clientSocket = new TcpClient();
-            clientSocket.Connect(IPAddress.Parse("192.168.0.103"), 9999);
+            clientSocket.Connect(IPAddress.Parse(IP), 9999);
             stream = clientSocket.GetStream();
+            reciever = new Thread(new ThreadStart(Recieve));
+            reciever.Start();
         }
 
         public void Send()

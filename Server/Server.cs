@@ -14,38 +14,38 @@ namespace Server
     class Server
     {
         Thread acceptor;
-        Queue<string> messagesQueue;
-        public static Client client;
+        public Queue<string> messagesQueue;
+        public Client client;
         TcpListener server;
-        Dictionary<int, TcpClient> usersDictionary = new Dictionary<int, TcpClient>();
+        Dictionary<int, Client> usersDictionary = new Dictionary<int, Client>();
         public int user = 0;
 
         public Server()
         {
             messagesQueue = new Queue<string>();
-            server = new TcpListener(IPAddress.Any, 9999);
+            server = new TcpListener(IPAddress.Parse("127.0.0.1"), 9999);
             server.Start();
         }
         public void Run()
         {
             acceptor = new Thread(new ThreadStart(AcceptClient));
             acceptor.Start();
-            //string message =
-            //Respond(message);
         }
         public void Broadcast()
         {
             while (true)
             {
-                string message = client.recievedMessageString;
-                messagesQueue.Enqueue(client.recievedMessageString);
-
-                //if queue has something in it, deque that something.
-                //string message = deque
-                //string message = read.ReadString();
-                foreach (KeyValuePair<int, TcpClient> item in usersDictionary)
+                if (messagesQueue.Count == 0)
                 {
-                    Console.WriteLine(client.recievedMessageString);
+                    continue;
+                }
+                else
+                {
+                    string message = messagesQueue.Dequeue();
+                    foreach (KeyValuePair<int, Client> item in usersDictionary)
+                    {
+                        item.Value.Send(message);
+                    }
                 }
             }
         }
@@ -59,10 +59,9 @@ namespace Server
                 Console.WriteLine("Connected");
                 NetworkStream stream = clientSocket.GetStream();
                 client = new Client(stream, clientSocket);
-                usersDictionary.Add(user, clientSocket);
+                usersDictionary.Add(user, client);
                 Thread reciever = new Thread(new ThreadStart(client.Recieve));
-                reciever.Start();
-                Broadcast();
+                reciever.Start();                
             }
             //clientSocket.Close();
             //serverSocket.Stop();
