@@ -9,15 +9,17 @@ using System.Threading.Tasks;
 
 namespace Client
 {
-    class Client
+    public class Client
     {
         TcpClient clientSocket;
         NetworkStream stream;
-
+        public string username;
         public Client(string IP, int port)
         {
+            //Console.WriteLine("Please enter your username.");
+            //username = Console.ReadLine();
             clientSocket = new TcpClient();
-            clientSocket.Connect(IPAddress.Parse("192.168.0.114"), 9999);
+            clientSocket.Connect(IPAddress.Parse("192.168.0.111"), 9999);
             stream = clientSocket.GetStream();
         }
 

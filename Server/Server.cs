@@ -17,8 +17,9 @@ namespace Server
         Queue<string> messagesQueue;
         public static Client client;
         TcpListener server;
-        Dictionary<string, TcpClient> usersDictionary = new Dictionary<string, TcpClient>();
-        public string username = "Bill";
+        Dictionary<int, TcpClient> usersDictionary = new Dictionary<int, TcpClient>();
+        public int user = 0;
+
         public Server()
         {
             messagesQueue = new Queue<string>();
@@ -38,10 +39,9 @@ namespace Server
             while (true)
             {
                 //if queue has something in it, deque that something.
-                //string message = de
-                //BinaryReader reader = new BinaryReader(clientSocket.GetStream());
+                //string message = deque
                 //string message = read.ReadString();
-                foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
+                foreach (KeyValuePair<int, TcpClient> item in usersDictionary)
                 {
                     //send to each client in dictionary;
                 }
@@ -51,12 +51,13 @@ namespace Server
         {
             while (true)
             {
+                user++;
                 TcpClient clientSocket = default(TcpClient);
                 clientSocket = server.AcceptTcpClient();
                 Console.WriteLine("Connected");
                 NetworkStream stream = clientSocket.GetStream();
                 client = new Client(stream, clientSocket);
-                usersDictionary.Add(username, clientSocket);
+                usersDictionary.Add(user, clientSocket);
                 Thread reciever = new Thread(new ThreadStart(client.Recieve));
                 reciever.Start();
             }

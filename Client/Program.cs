@@ -6,20 +6,12 @@ using System.Threading.Tasks;
 
 namespace Client
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args) 
         {
-            Client client = new Client("192.168.0.114", 9999);
+            Client client = new Client("192.168.0.111", 9999);
             Parallel.Invoke(client.Send, client.Recieve);
-
-            //Chatroom chatroom = new Chatroom();
-
-            //ISubscriber Mike = new User("Mike");
-            //ISubscriber Adam = new User("Adam");
-
-            //chatroom.JoinChatroom(Mike);
-            //chatroom.JoinChatroom(Adam);
         }
     }
 }
