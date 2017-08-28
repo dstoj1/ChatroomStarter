@@ -30,7 +30,6 @@ namespace Server
         {
             acceptor = new Thread(new ThreadStart(AcceptClient));
             acceptor.Start();
-            //accept client thread-- server always open. sender and broadcaster.
             //string message =
             //Respond(message);
         }
@@ -38,12 +37,15 @@ namespace Server
         {
             while (true)
             {
+                string message = client.recievedMessageString;
+                messagesQueue.Enqueue(client.recievedMessageString);
+
                 //if queue has something in it, deque that something.
                 //string message = deque
                 //string message = read.ReadString();
                 foreach (KeyValuePair<int, TcpClient> item in usersDictionary)
                 {
-                    //send to each client in dictionary;
+                    Console.WriteLine(client.recievedMessageString);
                 }
             }
         }
@@ -60,6 +62,7 @@ namespace Server
                 usersDictionary.Add(user, clientSocket);
                 Thread reciever = new Thread(new ThreadStart(client.Recieve));
                 reciever.Start();
+                Broadcast();
             }
             //clientSocket.Close();
             //serverSocket.Stop();
