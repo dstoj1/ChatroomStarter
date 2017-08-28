@@ -61,7 +61,7 @@ namespace Server
                 clientSocket = server.AcceptTcpClient();
                 Console.WriteLine("Connected");
                 NetworkStream stream = clientSocket.GetStream();
-                client = new Client(stream, clientSocket);
+                client = new Client(stream, clientSocket, this);
                 usersDictionary.Add(user, client);
                 Thread reciever = new Thread(new ThreadStart(client.Recieve));
                 reciever.Start();                
