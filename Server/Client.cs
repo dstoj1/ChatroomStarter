@@ -25,19 +25,22 @@ namespace Server
             {
                 byte[] message = Encoding.ASCII.GetBytes(Message);
                 stream.Write(message, 0, message.Count());
-            }     
+            }
         }
         public void Recieve()
         {
-            Queue<string> messagesQueue = new Queue<string>();
-            byte[] recievedMessage = new byte[256];
-            stream.Read(recievedMessage, 0, recievedMessage.Length);
-            string recievedMessageString = Encoding.ASCII.GetString(recievedMessage);
-            messagesQueue.Enqueue(recievedMessageString);
-
-            foreach (string value in messagesQueue)
+            while (true)
             {
-                Console.WriteLine(value);
+                byte[] recievedMessage = new byte[256];
+                stream.Read(recievedMessage, 0, recievedMessage.Length);
+                string recievedMessageString = Encoding.ASCII.GetString(recievedMessage);
+                Console.WriteLine(recievedMessageString);
+
+                //foreach (string value in messagesQueue)
+                //{
+                //    Console.WriteLine(value);
+                //}
+
             }
         }
     }
