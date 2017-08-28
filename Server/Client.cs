@@ -15,12 +15,12 @@ namespace Server
         public string UserId;
         public string recievedMessageString;
 
-        public Client(NetworkStream Stream, TcpClient Client, Server server)
+        public Client(NetworkStream Stream, TcpClient Client, Server server, int user)
         {
             this.server = server;
             stream = Stream;
             client = Client;
-            UserId = "495933b6-1762-47a1-b655-483510072e73";
+            UserId = user.ToString();
         }
         public void Send(string Message)
         {

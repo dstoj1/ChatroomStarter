@@ -52,6 +52,13 @@ namespace Server
                 }
             }
         }
+
+        private void UpdateUserJoined(Client client)
+        {
+            string message = $"user {client.UserId} has joined the chat!";
+            messagesQueue.Enqueue(message);
+        }
+
         private void AcceptClient()
         {
             while (true)
@@ -61,8 +68,9 @@ namespace Server
                 clientSocket = server.AcceptTcpClient();
                 Console.WriteLine("Connected");
                 NetworkStream stream = clientSocket.GetStream();
-                client = new Client(stream, clientSocket, this);
+                client = new Client(stream, clientSocket, this, user);
                 usersDictionary.Add(user, client);
+                UpdateUserJoined(client);
                 Thread reciever = new Thread(new ThreadStart(client.Recieve));
                 reciever.Start();                
             }
