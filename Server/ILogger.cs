@@ -9,5 +9,6 @@ namespace Server
     public interface ILogger
     {
         void Write(string message);
+        void Save();
     }
 }
