@@ -13,10 +13,7 @@ namespace Server
 {
     class Server
     {
-<<<<<<< HEAD
         Thread acceptor;
-=======
->>>>>>> 45f4afc930f63c9401f09b19c303e01fa860ab73
         Queue<string> messagesQueue;
         public static Client client;
         TcpListener server;
@@ -25,20 +22,12 @@ namespace Server
         public Server()
         {
             messagesQueue = new Queue<string>();
-<<<<<<< HEAD
             server = new TcpListener(IPAddress.Any, 9999);
-=======
-            server = new TcpListener(IPAddress.Parse("127.0.0.1"), 9999);
->>>>>>> 45f4afc930f63c9401f09b19c303e01fa860ab73
             server.Start();
         }
         public void Run()
         {
-<<<<<<< HEAD
             acceptor = new Thread(new ThreadStart(AcceptClient));
-=======
-            Thread acceptor = new Thread(new ThreadStart(AcceptClient));
->>>>>>> 45f4afc930f63c9401f09b19c303e01fa860ab73
             acceptor.Start();
             //accept client thread-- server always open. sender and broadcaster.
             //string message =
@@ -52,10 +41,10 @@ namespace Server
                 //string message = de
                 //BinaryReader reader = new BinaryReader(clientSocket.GetStream());
                 //string message = read.ReadString();
-                    foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
-                    {
-                        //send to each client in dictionary;
-                    }
+                foreach (KeyValuePair<string, TcpClient> item in usersDictionary)
+                {
+                    //send to each client in dictionary;
+                }
             }
         }
         private void AcceptClient()

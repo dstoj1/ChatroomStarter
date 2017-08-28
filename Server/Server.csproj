@@ -45,10 +45,7 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="ILogger.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="ManageClient.cs" />
->>>>>>> 45f4afc930f63c9401f09b19c303e01fa860ab73
     <Compile Include="Message.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
