@@ -34,7 +34,7 @@ namespace Server
                 byte[] recievedMessage = new byte[256];
                 stream.Read(recievedMessage, 0, recievedMessage.Length);
                 recievedMessageString = Encoding.ASCII.GetString(recievedMessage);
-                Console.WriteLine(recievedMessageString);
+                Console.WriteLine("User " + UserId + ": " + recievedMessageString);
                 server.messagesQueue.Enqueue(recievedMessageString);
             }
         }

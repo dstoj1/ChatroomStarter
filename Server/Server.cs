@@ -19,7 +19,7 @@ namespace Server
         public Client client;
         TcpListener server;
         Dictionary<int, Client> usersDictionary = new Dictionary<int, Client>();
-        public int user = 0;
+        private int user = 0;
 
         public Server()
         {
@@ -34,7 +34,7 @@ namespace Server
             broadcaster = new Thread(new ThreadStart(Broadcast));
             broadcaster.Start();
         }
-        public void Broadcast()
+        private void Broadcast()
         {
             while (true)
             {
@@ -52,13 +52,16 @@ namespace Server
                 }
             }
         }
-
         private void UpdateUserJoined(Client client)
         {
-            string message = $"user {client.UserId} has joined the chat!";
+            string message = $"User {client.UserId} has joined the chatroom!";
             messagesQueue.Enqueue(message);
         }
-
+        private void UpdateUserLeft(Client client)
+        {
+            string message = $"User {client.UserId} has left the chatroom.";
+            messagesQueue.Enqueue(message);
+        }
         private void AcceptClient()
         {
             while (true)
