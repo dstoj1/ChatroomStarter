@@ -17,8 +17,6 @@ namespace Client
         public string username;
         public Client(string IP, int port)
         {
-            //Console.WriteLine("Please enter your username.");
-            //username = Console.ReadLine();
             clientSocket = new TcpClient();
             clientSocket.Connect(IPAddress.Parse(IP), 9999);
             stream = clientSocket.GetStream();

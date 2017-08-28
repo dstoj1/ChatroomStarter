@@ -17,8 +17,5 @@ namespace Server
             this.Body = Body;
             UserId = sender?.UserId;
         }
-            //if (UserId == userId)
-            //{ //skip over message display
-            //}
     }
 }
