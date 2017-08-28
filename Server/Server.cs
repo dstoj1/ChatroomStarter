@@ -13,6 +13,7 @@ namespace Server
 {
     class Server
     {
+        Thread broadcaster;
         Thread acceptor;
         public Queue<string> messagesQueue;
         public Client client;
@@ -30,6 +31,8 @@ namespace Server
         {
             acceptor = new Thread(new ThreadStart(AcceptClient));
             acceptor.Start();
+            broadcaster = new Thread(new ThreadStart(Broadcast));
+            broadcaster.Start();
         }
         public void Broadcast()
         {
