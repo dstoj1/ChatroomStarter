@@ -10,8 +10,8 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            //LogTxt log = new LogTxt();
-            new Server().Run();
+            LogTxt log = new LogTxt();
+            new Server(log).Run();
             Console.ReadLine();
         }
     }

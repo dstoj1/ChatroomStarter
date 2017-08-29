@@ -11,7 +11,7 @@ using System.IO;
 
 namespace Server
 {
-    class Server
+    public class Server
     {
         Thread broadcaster;
         Thread acceptor;
@@ -20,9 +20,11 @@ namespace Server
         TcpListener server;
         Dictionary<int, Client> usersDictionary = new Dictionary<int, Client>();
         private int user = 0;
+        ILogger log;
 
-        public Server()
+        public Server(ILogger log)
         {
+            this.log = log;
             messagesQueue = new Queue<string>();
             server = new TcpListener(IPAddress.Parse("127.0.0.1"), 9999);
             server.Start();

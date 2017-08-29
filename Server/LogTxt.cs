@@ -9,12 +9,12 @@ namespace Server
 {
     public class LogTxt : ILogger
     {
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Write(string message)
+        {
+            string text = message;
+            File.WriteAllText(@"C:\Program Files\WriteText.txt", message);
+        }
+        public void SaveToTxt()
         {
             throw new NotImplementedException();
         }
