@@ -15,7 +15,7 @@ namespace Server
     {
         Thread broadcaster;
         Thread acceptor;
-        public Queue<string> messagesQueue;
+        public ConcurrentQueue<string> messagesQueue;
         public Client client;
         TcpListener server;
         Dictionary<int, Client> usersDictionary = new Dictionary<int, Client>();
@@ -58,11 +58,13 @@ namespace Server
         {
             string message = $"User {client.UserId} has joined the chatroom!";
             messagesQueue.Enqueue(message);
+            log.Write(message);
         }
         private void UpdateUserLeft(Client client)
         {
             string message = $"User {client.UserId} has left the chatroom.";
             messagesQueue.Enqueue(message);
+            log.Write(message);
         }
         private void AcceptClient()
         {
