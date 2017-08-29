@@ -15,7 +15,7 @@ namespace Server
     {
         Thread broadcaster;
         Thread acceptor;
-        public ConcurrentQueue<string> messagesQueue;
+        public Queue<string> messagesQueue;
         public Client client;
         TcpListener server;
         Dictionary<int, Client> usersDictionary = new Dictionary<int, Client>();
