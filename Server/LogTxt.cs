@@ -14,9 +14,5 @@ namespace Server
             string text = message;
             File.WriteAllText(@"C:\Program Files\WriteText.txt", message);
         }
-        public void SaveToTxt()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

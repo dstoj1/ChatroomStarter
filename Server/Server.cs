@@ -59,11 +59,11 @@ namespace Server
             string message = $"User {client.UserId} has joined the chatroom!";
             messagesQueue.Enqueue(message);
         }
-        //private void UpdateUserLeft(Client client)
-        //{
-        //    string message = $"User {client.UserId} has left the chatroom.";
-        //    messagesQueue.Enqueue(message);
-        //}
+        private void UpdateUserLeft(Client client)
+        {
+            string message = $"User {client.UserId} has left the chatroom.";
+            messagesQueue.Enqueue(message);
+        }
         private void AcceptClient()
         {
             while (true)
@@ -84,6 +84,5 @@ namespace Server
         {
             client.Send(body);
         }
-
     }
 }
